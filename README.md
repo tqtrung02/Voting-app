@@ -8,3 +8,5 @@ Nhóm 6:
 - Từ đó tạo ra QR code.
 - Người tham gia quét QR code để lựa chọn câu trả lời.
 - Admin thống kê các câu trả lời.
+- Xác thực người tham gia vote.
+- Giới hạn thời gian cho việc vote của người tham gia.
