@@ -1,7 +1,7 @@
 # Ứng dụng bỏ phiếu
 Nhóm 6:
-- Nguyễn Quốc Huy - 20020268
-- Trần Quang Trung - 	20020419
+- Nguyễn Quốc Huy - 20020419
+- Trần Quang Trung - 	20020268
 
 # Danh sách các chức năng chính:
 - Admin nhập các câu hỏi và các câu trả lời.
