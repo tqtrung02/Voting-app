@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "orrG2gXCpcKvBPnKks8Orq6fO0uSvE7i58K9ysrrorGRATGUsjO+e6ocKp1jp9M5QnveiP7nPdkufP9eZbYVUw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\84365\\Desktop\\Voting-app\\voting-app-backend\\voting-app.application\\voting-app.application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\84365\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.20\\microsoft.windowsdesktop.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\84365\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.20\\microsoft.netcore.app.ref.6.0.20.nupkg.sha512",
+    "C:\\Users\\84365\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.20\\microsoft.aspnetcore.app.ref.6.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}
