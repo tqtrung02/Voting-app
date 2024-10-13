@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Vote Statistics</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Vote Statistics</h1>
+        <form id="statsForm">
+            <label for="question">Enter Question:</label>
+            <input type="text" id="question" required>
+            <button type="submit">Get Statistics</button>
+        </form>
+
+        <div id="statsSection" style="display: none;">
+            <h2>Statistics for: <span id="statsQuestion"></span></h2>
+            <ul id="statsList"></ul>
+        </div>
+    </div>
+    <script src="js/Statistic.js"></script>
+</body>
+</html>
