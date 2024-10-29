@@ -27,6 +27,7 @@ voting-app-backend/*.sln.docstates
 
 # Node.js Files in Frontend
 voting-app-frontend/node_modules/
+voting-app-frontend/dist/
 voting-app-frontend/package-lock.json
 voting-app-frontend/yarn.lock
 voting-app-frontend/npm-debug.log*
