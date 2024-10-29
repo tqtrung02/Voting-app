@@ -1,34 +1,43 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using voting_app.core.Repository;
 using voting_app.share.Common;
+using voting_app.share.CustomAttribute;
 
 namespace voting_app.infrastructure.MysqlRepository
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity>
     {
-        public Task<TEntity> GetByFilterAsync(List<FilterItem> filterItems)
+
+        protected IConnectionManager connectionManager { get; set; }
+
+        public BaseRepository(IConnectionManager connectionManager)
         {
-            throw new NotImplementedException();
+            this.connectionManager = connectionManager;
         }
 
         public Task<TEntity> GetByIdAsync(Guid id)
         {
             throw new NotImplementedException();
         }
-
-        public Task<List<TEntity>> GetListByFilterAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public string GetTableName()
         {
-            throw new NotImplementedException();
+            var tType = typeof(TEntity);
+            var tableAttr = tType.GetCustomAttribute<TableAttribute>();
+
+            if(tableAttr is null)
+            {
+                return string.Empty;
+            }
+
+            return tableAttr.Name;
+
         }
 
         public PropertyInfo GetPrimaryKey()

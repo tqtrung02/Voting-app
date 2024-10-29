@@ -10,10 +10,5 @@ namespace voting_app.core.Repository
     public interface IBaseRepository<TEntity>
     {
         Task<TEntity> GetByIdAsync(Guid id);
-
-        Task<TEntity> GetByFilterAsync(List<FilterItem> filterItems);
-
-        Task<List<TEntity>> GetListByFilterAsync();
-
     }
 }

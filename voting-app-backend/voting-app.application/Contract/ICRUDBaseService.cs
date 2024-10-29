@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace voting_app.application.Contract
 {
-    public interface ICRUDBaseService<TDto> : IBaseService<TDto>
+    public interface ICRUDBaseService<TDto, TEntity> : IBaseService<TDto, TEntity>
     {
-        Task UpdateAsync(TDto entity);
+        Task UpdateAsync(TDto dto);
 
-        Task DeleteAsync(TDto entity);
+        Task DeleteAsync(TDto dto);
 
-        Task<TDto> CreateAsync(TDto entity);
+        Task<TDto> CreateAsync(TDto dto);
     }
 }

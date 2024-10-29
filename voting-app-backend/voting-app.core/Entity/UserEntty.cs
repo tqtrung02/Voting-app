@@ -7,16 +7,14 @@ using voting_app.share.CustomAttribute;
 
 namespace voting_app.core.Entity
 {
-    [Table("User")]
+    [Table("user")]
     public class UserEntty : RecordState
     {
         #region Field
         [PrimaryKey]
-        public Guid UserId { get; set; }
+        public Guid user_id { get; set; }
 
-        public string FullName { get; set; }
-
-        public string Email { get; set; }
+        public string email { get; set; }
         #endregion
 
         #region Method

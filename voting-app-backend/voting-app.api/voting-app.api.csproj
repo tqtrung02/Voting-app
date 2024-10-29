@@ -13,6 +13,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\voting-app.application\voting-app.application.csproj" />
+    <ProjectReference Include="..\voting-app.core\voting-app.core.csproj" />
+    <ProjectReference Include="..\voting-app.infrastructure\voting-app.infrastructure.csproj" />
+    <ProjectReference Include="..\voting-app.share\voting-app.share.csproj" />
   </ItemGroup>
 
 </Project>

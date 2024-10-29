@@ -1,26 +1,28 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using voting_app.application.Contract;
+using voting_app.core.Entity;
+using voting_app.core.Repository;
 using voting_app.share.Common;
 
 namespace voting_app.application.Service
 {
-    public class BaseService<TDto> : IBaseService<TDto>
+    public class BaseService<TDto, TEntity> : IBaseService<TDto, TEntity>
     {
-        public Task<TDto> GetByFilterAsync(List<FilterItem> filterItems)
+        protected readonly IMapper _mapper;
+        protected readonly IBaseRepository<TEntity> _baseRepository;
+
+        public BaseService(IBaseRepository<TEntity> baseRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _baseRepository = baseRepository;
+            _mapper = mapper;
         }
 
         public Task<TDto> GetByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<TDto>> GetListByFilterAsync()
         {
             throw new NotImplementedException();
         }

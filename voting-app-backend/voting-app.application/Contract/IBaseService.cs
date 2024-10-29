@@ -7,12 +7,8 @@ using voting_app.share.Common;
 
 namespace voting_app.application.Contract
 {
-    public interface IBaseService<TDto>
+    public interface IBaseService<TDto, TEntity>
     {
         Task<TDto> GetByIdAsync(Guid id);
-
-        Task<TDto> GetByFilterAsync(List<FilterItem> filterItems);
-
-        Task<List<TDto>> GetListByFilterAsync();
     }
 }

@@ -8,12 +8,12 @@ namespace voting_app.core.Entity
 {
     public class RecordState
     {
-        public string CreatedBy { get; set; }
+        public string created_by { get; set; }
 
-        public string ModifiedBy { get; set; }
+        public string modified_by { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime created_date { get; set; }
 
-        public DateTime ModifiedDate { get; set;}
+        public DateTime modified_date { get; set;}
     }
 }

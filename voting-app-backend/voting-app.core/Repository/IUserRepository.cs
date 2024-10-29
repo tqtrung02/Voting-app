@@ -9,5 +9,6 @@ namespace voting_app.core.Repository
 {
     public interface IUserRepository : ICRUDBaseRepository<UserEntty>
     {
+        Task<UserEntty> GetByEmailAsync(string email);
     }
 }

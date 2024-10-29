@@ -10,8 +10,6 @@ namespace voting_app.share.Common
     {
         public Guid UserId { get; set; }
 
-        public string FullName { get; set; }
-
         public string Email { get; set; }
     }
 }
