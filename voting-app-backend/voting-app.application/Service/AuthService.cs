@@ -46,17 +46,17 @@ namespace voting_app.application.Service
                 {
                     var userDto = new UserDto
                     {
-                        email = payload.Email,
+                        Email = payload.Email,
                     };
 
-                    var userResult = await _userService.CreateAsync(userDto);
+                    var userResult =  await _userService.CreateAsync(userDto);
                     userData = _mapper.Map<UserDto, UserEntty>(userResult);
                 }
 
                 var userToken = new UserDto()
                 {
-                    email = payload.Email,
-                    user_id = userData.user_id,
+                    Email = payload.Email,
+                    UserID = userData.UserID,
                 };
                 var tokenResult = createToken(userToken);
 
@@ -90,14 +90,14 @@ namespace voting_app.application.Service
 
             var claims = new List<Claim>()
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.user_id.ToString()),       // UserId
-                new Claim(JwtRegisteredClaimNames.Email, user.email),  // UserEmail
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserID.ToString()),       // UserId
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),  // UserEmail
             };
 
 
             var token = new JwtSecurityToken(
               claims: claims,
-              expires: DateTime.Now.AddHours(1), // Thời hạn của token (ở đây là 1 giờ)
+              expires: DateTime.Now.AddHours(expiredTime),
               signingCredentials: creds
             );
 

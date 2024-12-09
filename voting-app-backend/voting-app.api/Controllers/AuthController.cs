@@ -23,24 +23,22 @@ namespace voting_app.api.Controllers
             this._contextService = contextService;
         }
 
-        [HttpPost("health")]
-        [AllowAnonymous]
-        public async Task<IActionResult> Health()
-        {
-            var contextData = this._contextService.GetContextData();
-
-            return Ok($"OK");
-        }
 
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> GoogleLogin([FromBody] String token)
         {
             var tokenResult = await this._authService.LoginWithGoogle(token);
-
             _connectionManager.DisposeConnection();
 
             return Ok(tokenResult);
         }
+
+        [HttpGet("")]
+        public IActionResult CheckToken()
+        {
+            return Ok("signed"); 
+        }
+
     }
 }

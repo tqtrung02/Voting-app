@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -26,7 +27,7 @@ namespace voting_app.api.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-           
+
             // Kiểm tra xem API có attribute AllowAnonymous không
             var endpoint = context.GetEndpoint();
             if (endpoint?.Metadata?.GetMetadata<Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute>() != null)
@@ -40,6 +41,7 @@ namespace voting_app.api.Middleware
             var authHeader = context.Request.Headers["Authorization"].ToString();
             if (!authHeader.StartsWith("Bearer "))
             {
+                context.Response.StatusCode = 401;
                 return;
             }
             var token = authHeader.Substring("Bearer ".Length).Trim();
@@ -73,13 +75,26 @@ namespace voting_app.api.Middleware
                         Email = userEmail,
                     };
 
-                    await _next(context);
+                    try
+                    {
+                        await _next(context);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        context.Response.StatusCode = 500;
+                    }
+
 
                 }
                 catch (Exception ex)
                 {
-                    throw new AuthenticationException();
+                    context.Response.StatusCode = 401;
                 }
+            }
+            else
+            {
+                context.Response.StatusCode = 401;
             }
         }
     }

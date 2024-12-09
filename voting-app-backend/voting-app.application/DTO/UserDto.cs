@@ -8,9 +8,9 @@ namespace voting_app.application.DTO
 {
     public class UserDto
     {
-        public Guid user_id { get; set; }
+        public Guid UserID { get; set; }
 
 
-        public string email { get; set; }
+        public string Email { get; set; }
     }
 }

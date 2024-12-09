@@ -10,9 +10,12 @@ namespace voting_app.share.CustomAttribute
     {
         public string Name { get; set; }
 
-        public TableAttribute(string name) : base()
+        public Type RepositoryType { get; set; }
+
+        public TableAttribute(string name, Type repositoryType) : base()
         {
             Name = name;
+            RepositoryType = repositoryType;
         }
     }
 }

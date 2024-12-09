@@ -8,23 +8,21 @@ using voting_app.application.Contract;
 using voting_app.application.DTO;
 using voting_app.core.Entity;
 using voting_app.core.Repository;
+using voting_app.share.Contract;
 
 namespace voting_app.application.Service
 {
     public class UserService : CRUDBaseService<UserDto, UserEntty>, IUserService
     {
-        public UserService(IUserRepository userRepository, IMapper mapper) : base(userRepository, mapper) { 
+        public UserService(IUserRepository userRepository, IServiceProvider serviceProvider) : base(userRepository, serviceProvider) { 
         
         }
 
-        protected override Task processDataBeforeCreate(UserDto dto, UserEntty entity)
+        protected override async Task processDataBeforeCreate(UserDto dto, UserEntty entity)
         {
-            var userId = Guid.NewGuid();
-            entity.user_id= userId;
-            dto.user_id= userId;
-            entity.created_by = userId.ToString();
-            entity.modified_by = userId.ToString();
-            return base.processDataBeforeCreate(dto, entity);
+            await base.processDataBeforeCreate(dto, entity);
+            entity.CreatedBy = dto.UserID;
+            entity.ModifiedBy = dto.UserID;
         }
     }
 }

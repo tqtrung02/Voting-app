@@ -10,5 +10,7 @@ namespace voting_app.application.Contract
     public interface IBaseService<TDto, TEntity>
     {
         Task<TDto> GetByIdAsync(Guid id);
+
+        Task<TDto> GetEntireByByIdAsync(Guid id);
     }
 }

@@ -15,6 +15,25 @@ namespace voting_app.application
         {
             CreateMap<UserDto, UserEntty>();
             CreateMap<UserEntty, UserDto>();
+
+            CreateMap<VoteEntity, VoteDto>();
+            CreateMap<VoteDto, VoteEntity>();
+
+            CreateMap<EmailEntity, EmailDto>();
+            CreateMap<EmailDto, EmailEntity>();
+
+            CreateMap<AnswerEntity, AnswerDto>();
+            CreateMap<AnswerDto, AnswerEntity>();
+
+            CreateMap<ResultEntity, ResultDto>();
+            CreateMap<ResultDto, ResultEntity>();
+
+
+            CreateMap<ResultDetailEntity, ResultDetailDto>();
+            CreateMap<ResultDetailDto, ResultDetailEntity>();
+
+            CreateMap<QuestionEntity, QuestionDto>();
+            CreateMap<QuestionDto, QuestionEntity>();
         }
     }
 }

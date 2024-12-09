@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using voting_app.application.Contract;
 using voting_app.core.Repository;
+using voting_app.share.Contract;
+using voting_app.share.CustomAttribute;
 
 namespace voting_app.application.Service
 {
@@ -14,7 +17,8 @@ namespace voting_app.application.Service
 
         private ICRUDBaseRepository<TEntity> _repository;
 
-        public CRUDBaseService(ICRUDBaseRepository<TEntity> repository, IMapper mapper) : base(repository, mapper)
+
+        public CRUDBaseService(ICRUDBaseRepository<TEntity> repository, IServiceProvider serviceProvider) : base(repository, serviceProvider)
         {
             _repository = repository;
         }
@@ -27,7 +31,14 @@ namespace voting_app.application.Service
 
             await beforeCreateAsync(dto, entityCreate);
 
-            var entityResut = await _repository.CreateAsync(entityCreate);
+            await _repository.CreateAsync(entityCreate);
+
+            var idProperty = entityCreate.GetType().GetProperties().Where(p => p.GetCustomAttribute<PrimaryKeyAttribute>() != null).First();
+            var id = (Guid)idProperty.GetValue(entityCreate);
+
+            _connectionManager.CreateNewSession();
+
+            var entityResut = await _repository.GetByIdAsync(id);
 
             var dtoResult = _mapper.Map<TEntity, TDto>(entityResut);
 
@@ -50,6 +61,21 @@ namespace voting_app.application.Service
 
         protected virtual async Task processDataBeforeCreate(TDto dto, TEntity entity)
         {
+            // gán khóa chính
+            var primaryKeyInfo = entity.GetType().GetProperties().Where(p => p.GetCustomAttribute<PrimaryKeyAttribute>() != null).First();
+
+            var primaryKeyInfoDto = dto.GetType().GetProperty(primaryKeyInfo.Name);
+
+            var primaryId = primaryKeyInfoDto.GetValue(dto);
+
+            if (primaryId is null || primaryId.ToString() == Guid.Empty.ToString())
+            {
+                var id = Guid.NewGuid();
+                primaryKeyInfoDto.SetValue(dto, id);
+                primaryKeyInfo.SetValue(entity, id);
+            }
+
+
             return;
         }
 
