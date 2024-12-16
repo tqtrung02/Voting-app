@@ -11,4 +11,4 @@ Nhóm 6:
 - Xác thực người tham gia vote.
 - Giới hạn thời gian cho việc vote của người tham gia.
 
-Báo cáo: https://drive.google.com/file/d/1g3KW9nK7ZBQftKix5XWTLf3JcdwiptDA/view?usp=sharing
+[Báo cáo](https://drive.google.com/file/d/1g3KW9nK7ZBQftKix5XWTLf3JcdwiptDA/view?usp=sharing)
