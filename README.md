@@ -10,3 +10,5 @@ Nhóm 6:
 - Admin thống kê các câu trả lời.
 - Xác thực người tham gia vote.
 - Giới hạn thời gian cho việc vote của người tham gia.
+
+Báo cáo: https://drive.google.com/file/d/1g3KW9nK7ZBQftKix5XWTLf3JcdwiptDA/view?usp=sharing
